@@ -100,7 +100,7 @@ bool guessingWord (std::string target, int length) {
                 }
             }
 
-        if (!found) {
+        if ( !found) {
             std::cout << "Word remaining: " << remaining << std::endl;
             std::cout << word << std::endl;
         }
