@@ -74,7 +74,7 @@ bool guessingWord (std::string target, int length) {
     int count = 0;
     char letter;
     int remaining = length;
-    std::string word = "";
+    std::string  word = "";
     do {
         // a copy so it won't directly decrease the length
         std::cout<< "Guess the letter for the word: ";
