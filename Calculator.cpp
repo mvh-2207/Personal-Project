@@ -67,7 +67,7 @@ int main() {
             break; // break out of the program
         }
 
-    }while (option != "N" || option!= "n");
+    }while (option != "N" || option != "n");
 
     return 0;
 }
