@@ -62,7 +62,7 @@ int main() {
         std::cout << "Do you want to continue(y/n): " << std::endl;
         std::cin >> option;
 
-        if (option == "N" || option == "n") {
+        if (option =="N" || option == "n") {
             std::cout << "Thanks for using our calculator!" << std::endl;
             break; // break out of the program
         }
