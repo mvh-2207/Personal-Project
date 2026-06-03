@@ -71,7 +71,7 @@ return 0;
  * @param numOfBets this will load in the number based on the wager
  * @return the num for straight wager
  */
-int chosenLevel(int &num, int numOfBets[]){
+int chosenLevel(int &num, int numOfBets[]) {
     int randomNum;
     randomNum = std::rand() % 37;
     if (num == 1) {
