@@ -7,3 +7,6 @@ This repository is a space where I will put my personal developing project. Thes
 2) Calculator Project (6/1/2026)
 - This project is an easy one that performs solving calculation with two input numbers. It can do +, - , *, /, trigonometric function, sqrt, and power.
 - However, it can only calculate 2 numbers. (I was trying to do a calculator program that can take more numbers but it failed completely TvT).
+3) Casino Project - Roulette (6/4/2026)
+- This project is also a guessing game like the Hangman project, but in a casino format. Moreover, in this project, the player can bet money. If they guess the number right, they will receive the amount of money collected based on the amount of number they guessed right. If they guess any number wrong, then the amount of money in the bet will be subtracted from the balance.
+- Player can keep on betting with the amount of money which they have collected from previous matchss (In this game, the amount of bet will be considered as the amount of money that the player has). 
