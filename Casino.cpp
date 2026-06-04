@@ -110,51 +110,53 @@ int chosenLevel(int &num, int numOfBets[]) {
  */
 bool guessingNumber(int &randomNum, int numOfBets[], int &num, int &count) {
     int num1, num2, num3, num4, num5, num6;
-    std::cout << "Bet on numbers that you think will appear: ";
-    if (num == 1) {
-        std::cin >> num1;
-        if (num1 == randomNum) {
-            count ++;
-            return true;
-        }
-    }
-    else if (num == 2) {
-        std::cin >> num1 >> num2;
-        for (int i = 0; i < num; i++) {
-            if (num1 == numOfBets[i] || num2 == numOfBets[i]) {
-                count++;
+    do {
+        std::cout << "Bet on numbers that you think will appear (0-37): ";
+        if (num == 1) {
+            std::cin >> num1;
+            if (num1 == randomNum) {
+                count ++;
+                return true;
             }
-            return true;
         }
-    }
-    else if (num == 3) {
-        std::cin >> num1 >> num2 >> num3;
-        for (int i = 0; i < num; i++) {
-            if (num1 == numOfBets[i] || num2 == numOfBets[i] || num3 == numOfBets[i]) {
-                count++;
+        else if (num == 2) {
+            std::cin >> num1 >> num2;
+            for (int i = 0; i < num; i++) {
+                if (num1 == numOfBets[i] || num2 == numOfBets[i]) {
+                    count++;
+                }
+                return true;
             }
-            return true;
         }
-    }
-    else if (num == 4) {
-        std::cin >> num1 >> num2 >> num3 >> num4;
-        for (int i = 0; i < num; i++) {
-            if (num1 == numOfBets[i] || num2 == numOfBets[i] || num3 == numOfBets[i] || num4 == numOfBets[i]) {
-                count++;
+        else if (num == 3) {
+            std::cin >> num1 >> num2 >> num3;
+            for (int i = 0; i < num; i++) {
+                if (num1 == numOfBets[i] || num2 == numOfBets[i] || num3 == numOfBets[i]) {
+                    count++;
+                }
+                return true;
             }
-            return true;
         }
-    }
-    else if (num == 5) {
-        std::cin >> num1 >> num2 >> num3 >> num4 >> num5 >> num6;
-        for (int i = 0; i < 6; i++) {
-            if (num1 == numOfBets[i] || num2 == numOfBets[i] || num3 == numOfBets[i] || num4 == numOfBets[i]
-                || num5 == numOfBets[i] || num6 == numOfBets[i]) {
-                count++;
+        else if (num == 4) {
+            std::cin >> num1 >> num2 >> num3 >> num4;
+            for (int i = 0; i < num; i++) {
+                if (num1 == numOfBets[i] || num2 == numOfBets[i] || num3 == numOfBets[i] || num4 == numOfBets[i]) {
+                    count++;
+                }
+                return true;
             }
-            return true;
         }
-    }
+        else if (num == 5) {
+            std::cin >> num1 >> num2 >> num3 >> num4 >> num5 >> num6;
+            for (int i = 0; i < 6; i++) {
+                if (num1 == numOfBets[i] || num2 == numOfBets[i] || num3 == numOfBets[i] || num4 == numOfBets[i]
+                    || num5 == numOfBets[i] || num6 == numOfBets[i]) {
+                    count++;
+                    }
+                return true;
+            }
+        }
+    }while (num1 < 0 && num1 > 37 || num2 < 0 && num2 > 37 || num3 < 0 && num3 > 37 || num4 < 0 && num4 > 37 || num5 < 0 && num5 > 37 || num6 < 0 && num6 > 37);
     return false;
 }
 
