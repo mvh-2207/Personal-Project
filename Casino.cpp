@@ -125,7 +125,7 @@ bool guessingNumber(int &randomNum, int numOfBets[], int &num, int &count) {
                 if (num1 == numOfBets[i] || num2 == numOfBets[i]) {
                     count++;
                 }
-                return true;
+                 return true;
             }
         }
         else if (num == 3) {
