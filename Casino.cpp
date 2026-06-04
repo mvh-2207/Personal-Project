@@ -116,7 +116,7 @@ bool guessingNumber(int &randomNum, int numOfBets[], int &num, int &count) {
             std::cin >> num1;
             if (num1 == randomNum) {
                 count ++;
-                return true;
+                 return true;
             }
         }
         else if (num == 2) {
