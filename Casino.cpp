@@ -3,10 +3,11 @@
 #include <iomanip>
 #include <ctime>
 
-const int MAX_NUM = 5;
+const int MAX_NUM = 6; //maximum numbers to bet on
 
-int chosenLevel(int &num, int numOfBets[]);
-bool guessingNumber(int &randomNum, int numOfBets[], int &num, int &count);
+//function declaration
+void chosenLevel(int &num, int numOfBets[]);
+bool guessingNumber(int numOfBets[], int &num, int &count);
 double finalBets(double &bets, int &num);
 
 int main() {
@@ -14,11 +15,12 @@ int main() {
     int num;
     char choice;
     double bets, totalLeft, balance = 0.0;
-    int randomNum;
     int numOfBets[MAX_NUM];
+
         std::cout << std::endl;
         std::cout << "-- Welcome you to my Casino Guessing Game --" << std::endl;
         std::cout << std::endl;
+
     do {
         int count = 0;
         std::cout << "Straight (1): 1 numbers " << std::endl;
@@ -28,40 +30,50 @@ int main() {
         std::cout << "Sixline  (5): 6 numbers " << std::endl;
         std::cout << "Please choose the wager you want to bet: ";
         std::cin >> num;
-        randomNum = chosenLevel(num, numOfBets);
+        chosenLevel(num, numOfBets);
+
         std::cout << "How much do you bets: ";
         std::cin >> bets;
-        for (int i = 0; i < num; i++) {
-            std::cout << numOfBets[i] << std::endl;
-        }
-        bool found = guessingNumber(randomNum, numOfBets, num, count);
+
+        bool found = guessingNumber( numOfBets, num, count);
+
+            for (int i = 0; i < num; i++) {
+                std::cout << numOfBets[i] << " ";
+            }
+        std::cout << std::endl;
+
         totalLeft = finalBets(bets, num); // bet / num of wager
         balance += totalLeft; // keep the number of each wager
-        if (found) {
+
+        if (!found) {
             std::cout << "Your bet will be double and multiply with the numbers you guessed right!" << std::endl;
-            std::cout << "Numbers of number you guessed right: " << count << std::endl;
+            std::cout << "Numbers of bets you guessed right: " << count << std::endl;
             std::cout << "Here is the reward after you have guessed right " << count << " times: " << std::fixed
             << std::setprecision(2) << totalLeft * 2 * count << std::endl;
-            balance += totalLeft * 2 * count; // num of each wager will be doubled with the number of right guessing
-            balance -= totalLeft * 2 * (num - count); // minus the bet with the wrong guessing
+
+            balance += totalLeft * 2 * count;         // num of each wager will be doubled with the number of right guessing
+
             if (num == 5) {
                 balance -= totalLeft * 2 * (6 - count);
             }
         }
-        else {
+        else  {
             std::cout << "You lost. Your bet will belong to other players." << std::endl;
-            balance -= totalLeft * 2 * (num - count); // minus the bet with they guess wrong
+            balance -= totalLeft * 2 * (num - count);  // minus the bet with they guess wrong
             if (num == 5) {
                 balance -= totalLeft * 2 * (6 - count);
             }
         }
+
         std::cout << "Your current balance is: " << balance << std::endl;
         std::cout << "Do you want to continue betting?(y/n): ";
         std::cin >> choice;
         if (choice == 'N' || choice == 'n') {
             std::cout << "Thank you for playing. Hope to see you again!" << std::endl;
         }
+
     }while (choice == 'Y' || choice == 'y');
+
 return 0;
 }
 
@@ -69,13 +81,12 @@ return 0;
  *
  * @param num the chosen number of wager
  * @param numOfBets this will load in the number based on the wager
- * @return the num for straight wager
  */
-int chosenLevel(int &num, int numOfBets[]) {
-    int randomNum;
-    randomNum = std::rand() % 37;
+void chosenLevel(int &num, int numOfBets[]) {
     if (num == 1) {
-        randomNum = std::rand() % 37;
+        for (int i = 0; i < num; i++) {
+            numOfBets[i] = std::rand() % 37;
+        }
     }
     else if (num == 2) {
         for (int i = 0; i < num; i++) {
@@ -97,26 +108,26 @@ int chosenLevel(int &num, int numOfBets[]) {
             numOfBets[i] = std::rand() % 37;
         }
     }
-    return randomNum;
 }
 
 /**
  *
- * @param randomNum /random number for straight wager
  * @param numOfBets hold random numbers of other wager
  * @param num the chosen wager
  * @param count the number of time which the user bet the right numbers
  * @return whether player found the number or not
  */
-bool guessingNumber(int &randomNum, int numOfBets[], int &num, int &count) {
+bool guessingNumber(int numOfBets[], int &num, int &count) {
     int num1, num2, num3, num4, num5, num6;
     do {
         std::cout << "Bet on numbers that you think will appear (0-37): ";
         if (num == 1) {
             std::cin >> num1;
-            if (num1 == randomNum) {
-                count ++;
-                 return true;
+            for (int i = 0; i < num; i++) {
+                if (num1 == numOfBets[i]) {
+                    count++;
+                }
+                return true;
             }
         }
         else if (num == 2) {
@@ -156,7 +167,9 @@ bool guessingNumber(int &randomNum, int numOfBets[], int &num, int &count) {
                 return true;
             }
         }
+
     }while (num1 < 0 && num1 > 37 || num2 < 0 && num2 > 37 || num3 < 0 && num3 > 37 || num4 < 0 && num4 > 37 || num5 < 0 && num5 > 37 || num6 < 0 && num6 > 37);
+
     return false;
 }
 
@@ -184,4 +197,3 @@ double finalBets(double &bets, int &num) {
         total = bets / 6;
     }
     return total;
-}
