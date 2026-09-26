@@ -117,7 +117,7 @@ bool guessingWord (std::string target, int length) {
                     }
                     std::cout << "Letter \"" << target[i] <<"\" found at position " << i + 1 << ". Word remaining: " << remaining << std::endl;
                     word += target[i];
-                    if (word[i] != target[i]) {
+                    if (target[i] != word[i]) {
                         swapLetters(word[i], target[i]);
                     }
                         std::cout << word << std::endl;
